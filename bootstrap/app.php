@@ -1,8 +1,14 @@
 <?php
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\SetlocaleMiddleware;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -12,8 +18,19 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+         'lang' => SetlocaleMiddleware::class,
+         'admin' => AdminMiddleware::class,
+        ]
+        );
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
-    })->create();
+            $exceptions->render(function (NotFoundHttpException $e, Request $request) {
+                if (request()->is('api/*') && $e->getPrevious() instanceof ModelNotFoundException) {
+                    $model = Str::afterLast($e->getPrevious()->getModel(), '\\');
+                    return response()->json(['message' => $model . ' not found'], 404);
+                }
+    
+                return response()->json(['message' => __('errors.404')], 404);
+            });
+        })->create();

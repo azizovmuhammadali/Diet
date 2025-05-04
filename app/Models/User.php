@@ -50,4 +50,7 @@ class User extends Authenticatable
     public function likes(){
         return $this->hasMany(Like::class);
     }
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
 }

@@ -27,7 +27,7 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('products', 'public');
         }
-        $productDTO = new ProductDTO($request->translations,$imagePath,$request->calory);
+        $productDTO = new ProductDTO($request->translations,$imagePath,$request->calory,$request->price);
         $product = $this->productServiceInterface->store($productDTO);
         return $this->success(new ProductResource($product),__('successes.product.create'));
     }
@@ -44,7 +44,7 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('products', 'public');
         }
-        $productDTO = new ProductDTO($request->translations,$imagePath,$request->calory);
+        $productDTO = new ProductDTO($request->translations,$imagePath,$request->calory,$request->price);
         $product = $this->productServiceInterface->update($id,$productDTO);
         return $this->success(new ProductResource($product),__('successes.product.update'));
     }

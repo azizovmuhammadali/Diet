@@ -8,4 +8,11 @@
    'delete' => 'Malumotlar ochirildi',
    'logout' => 'Tizimdan muvaffaqiyatli chiqdingiz',
    ],
+   'product' => [
+     'all' => 'Hamma mahsulotlar',
+     'create' => 'Mahsulot yaratildi',
+     'show' => 'Siz izlagan mahsulot',
+     'update' => 'Mahsulot yangilandi',
+     'delete' => 'Mahsulot o\'chirildi'
+   ]
 ];

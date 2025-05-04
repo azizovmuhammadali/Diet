@@ -8,4 +8,11 @@ return [
 'delete' => 'Data deleted',
 'logout' => 'You have successfully logged out',
 ],
+   'product' => [
+'all' => 'All products',
+   'create' => 'Product created',
+   'show' => 'Product you are looking for',
+    'update' => 'Product updated',
+    'delete' => 'Product deleted'
+]
 ];

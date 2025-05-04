@@ -21,4 +21,7 @@ class Product extends Model implements TranslatableContract
     {
         return Attribute::make(fn(): string => URL::to('storage/' . $this->image));
     }
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
 }

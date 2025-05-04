@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\V1\api\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\V1\api\Admin\UserController;
 
@@ -10,6 +11,7 @@ use App\Http\Controllers\V1\api\Admin\UserController;
 
     Route::middleware(['admin', 'auth:sanctum'])->group(function () {
         Route::get('logout', [UserController::class, 'logout']);
+        Route::apiResource('products',ProductController::class);
     });
 
 

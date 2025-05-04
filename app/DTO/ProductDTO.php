@@ -10,10 +10,12 @@ class ProductDTO
     public $translations;
     public $image;
     public $calory;
-    public function __construct($translations,$image,$calory)
+    public $price;
+    public function __construct($translations,$image,$calory,$price)
     {
         $this->translations = $translations;
         $this->image = $image;
         $this->calory = $calory;
+        $this->price = $price;
     }
 }

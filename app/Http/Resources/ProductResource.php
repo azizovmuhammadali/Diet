@@ -14,6 +14,7 @@ class ProductResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $requestedCurrency = $request->input('Currency', 'UZS');
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -21,6 +22,8 @@ class ProductResource extends JsonResource
             'image' => $this->url,
             'calory' => $this->calory,
             'slug' => $this->slug,
+            'price' => $this->price,
+            'currency' => $requestedCurrency,
             'translations' => ProductTranslationResource::collection($this->whenLoaded('translations')),
         ];
     }

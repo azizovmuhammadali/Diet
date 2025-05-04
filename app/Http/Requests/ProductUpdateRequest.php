@@ -25,7 +25,8 @@ class ProductUpdateRequest extends FormRequest
             'translations.%name%' => 'nullable|sometimes|string',
             'translations.%description%' => 'nullable|sometimes|string',
               'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-              'calory' => 'nullable'
+              'calory' => 'nullable',
+              'price' => 'nullable|numeric'
         ];
     }
 }

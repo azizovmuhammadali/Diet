@@ -17,6 +17,7 @@ class ProductReposity implements ProductReposityInterface
       $product->image = $data['image'];
       $product->calory = $data['calory'];
       $product->slug = $data['slug'];
+      $product->price = $data['price'];
       $product->save();
       return $product->load('translations');
       }
@@ -30,6 +31,7 @@ class ProductReposity implements ProductReposityInterface
         $product->image = $data['image'] ?? $product->image;
         $product->calory = $data['calory'] ?? $product->calory;
         $product->slug = $data['slug'] ?? $product->slug;
+        $product->price = $data['price'] ?? $product->price;
         $product->save();
         return $product->load('translations');
       }

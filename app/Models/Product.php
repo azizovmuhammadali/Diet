@@ -16,6 +16,7 @@ class Product extends Model implements TranslatableContract
         'calory',
         'image',
         'slug',
+        'price',
     ];
     public function url(): Attribute
     {
@@ -23,5 +24,8 @@ class Product extends Model implements TranslatableContract
     }
     public function likes(){
         return $this->hasMany(Like::class);
+    }
+    public function orders(){
+        return $this->belongsToMany(Order::class,'order_products');
     }
 }

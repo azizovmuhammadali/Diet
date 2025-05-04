@@ -25,7 +25,8 @@ class ProductStoreRequest extends FormRequest
             'translations.%name%' => 'required|sometimes|string',
             'translations.%description%' => 'required|sometimes|string',
               'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-              'calory' => 'required'
+              'calory' => 'required',
+              'price' => 'numeric'
         ];
     }
 }

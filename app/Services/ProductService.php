@@ -29,6 +29,7 @@ class ProductService extends BaseService implements ProductServiceInterface
          'image' => $productDTO->image,
          'slug' => $slug,
          'calory' => $productDTO->calory,
+         'price' => $productDTO->price,
           ];
           return $this->productReposityInterface->create($data);
     }
@@ -45,6 +46,7 @@ class ProductService extends BaseService implements ProductServiceInterface
          'image' => $productDTO->image,
          'slug' => $slug,
          'calory' => $productDTO->calory,
+         'price' => $productDTO->price,
           ];
           return $this->productReposityInterface->findById($id,$data);
     }

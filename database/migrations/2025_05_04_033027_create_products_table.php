@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('image');
             $table->string('calory');
+            $table->decimal('price');
             $table->string('slug')->unique();
             $table->timestamps();
         });

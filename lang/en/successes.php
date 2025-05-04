@@ -14,5 +14,10 @@ return [
    'show' => 'Product you are looking for',
     'update' => 'Product updated',
     'delete' => 'Product deleted'
-]
+   ], 
+   'like' => [
+     'all' => 'All your favorite products',
+     'liked' => 'Liked',
+     'unlike' => 'Liked removed'
+],
 ];

@@ -14,5 +14,10 @@
      'show' => 'Siz izlagan mahsulot',
      'update' => 'Mahsulot yangilandi',
      'delete' => 'Mahsulot o\'chirildi'
-   ]
+   ],
+    'like' => [
+      'all' => 'Hamma yoqtirgan mahsulotingiz',
+      'liked' => 'Layk bosdingiz',
+      'unlike' => 'Layk qaytarib olindi'
+    ],
 ];

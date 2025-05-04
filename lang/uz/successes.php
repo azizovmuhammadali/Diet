@@ -20,4 +20,22 @@
       'liked' => 'Layk bosdingiz',
       'unlike' => 'Layk qaytarib olindi'
     ],
+    'order' => [
+      'all' => 'Hamma buyurtmalar',
+      'create' => 'Buyurtma yaratildi',
+      'show' => 'Sizning buyurtmangiz',
+      'update' => 'Buyurtma yangilandi',
+      'delete' => 'Buyurtma o\'chirildi',
+    ],
+    'notify' => [
+      'create' => 'Sizga yangi buyurtma keldi',
+      'update' => 'Bu buyurtmani yangiladi',
+      'delete' => 'Bu buyurtma o\'chirildi',
+    ],
+    'notifies' => [
+      'unread' => 'O\'qilmagan habarlar',
+      'read' => 'O\'qilgan habarlar',
+      'all' => 'Hamma habarlar',
+      'allread' => 'Hamma o\'qilgan habarlar'
+    ],
 ];

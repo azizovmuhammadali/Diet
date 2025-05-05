@@ -38,4 +38,18 @@ return [
     'all' => 'All messages',
     'allread' => 'All read messages'
 ],
+'languages' => [
+  'all' => 'All languages',
+  'created' => 'Language created',
+  'show' => 'Language you are looking for',
+  'updated' => 'Language updated',
+  'deleted' => 'Language deleted',
+],
+ 'translations' => [
+   'all' => 'All translations',
+   'created' => 'Translation created',
+   'show' => 'The translation you are looking for',
+   'updated' => 'Translation updated',
+   'deleted' => 'Translation deleted',
+],
 ];

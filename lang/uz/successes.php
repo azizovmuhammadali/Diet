@@ -38,4 +38,18 @@
       'all' => 'Hamma habarlar',
       'allread' => 'Hamma o\'qilgan habarlar'
     ],
+    'languages' => [
+      'all' => 'Barcha Tillar',
+      'created' => 'Til yaratildi',
+      'show' => 'Siz izlagan til',
+      'updated' => 'Til yangilandi',
+      'deleted' => 'Til o\'chirildi',
+    ],
+    'translations' => [
+      'all' => 'Barcha tarjimalar',
+      'created' => 'Tarjima yaratildi',
+      'show' => 'Siz izlagan tarjima',
+      'updated' => 'Tarjima yangilandi',
+      'deleted' => 'Tarjima o\'chirildi',
+    ],
 ];

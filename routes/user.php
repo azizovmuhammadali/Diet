@@ -18,6 +18,7 @@ use App\Http\Controllers\V1\api\User\UserController;
         Route::get('products/{id}',[ProductController::class,'show']);
         Route::apiResource('whishlist',LikeController::class);
         Route::apiResource('order',OrderController::class);
+        Route::get('filter',[OrderController::class,'filter']);
     });
 
 

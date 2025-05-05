@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\V1\api\Admin\UserController;
 use App\Http\Controllers\V1\api\Admin\ProductController;
 use App\Http\Controllers\V1\api\Admin\NotificationController;
+use App\Http\Controllers\V1\api\Admin\OrderController;
 use App\Http\Controllers\V1\api\Admin\TranslationController;
 
     Route::post('register', [UserController::class, 'register']);
@@ -19,6 +20,7 @@ use App\Http\Controllers\V1\api\Admin\TranslationController;
         Route::get('markAsRead/{id}', [NotificationController::class,'markAsRead']);
         Route::apiResource('lang',LanguageController::class);
         Route::apiResource('translations',TranslationController::class);
+        Route::put('orders/{id}',[OrderController::class,'status']);
     });
 
 

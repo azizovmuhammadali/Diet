@@ -16,8 +16,11 @@ class OrderResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'products' => ProductResource::collection($this->whenLoaded('products')),
-            'quantity' => $this->quantity,
+            'products' => ProductResource::collection($this->whenLoaded('products'))->map(function ($product) {
+                // Har bir mahsulot uchun quantityni olish
+                $product->quantity = $product->pivot->quantity;
+                return $product;
+            }),
         ];
     }
 }

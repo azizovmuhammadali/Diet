@@ -23,7 +23,7 @@ class OrderUpdateRequest extends FormRequest
     {
         return [
             'product_id' => 'nullable|exists:products,id',
-            'quantity' => 'nullable|numeric'
+            'quantity' => 'nullable'
         ];
     }
 }

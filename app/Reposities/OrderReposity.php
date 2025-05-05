@@ -2,12 +2,14 @@
 
 namespace App\Reposities;
 
+use App\Filters\ProductFilter;
 use App\Models\User;
 use App\Models\Order;
 use App\Notifications\OrderUpdatedNotification;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\OrderCreatedNotification;
 use App\Interfaces\Reposities\OrderReposityInterface;
+use App\Models\Product;
 use App\Notifications\OrderDeletedNotification;
 
 class OrderReposity implements OrderReposityInterface
@@ -53,6 +55,16 @@ class OrderReposity implements OrderReposityInterface
       foreach ($admins as $admin) {
         $admin->notify(new OrderDeletedNotification($order));
     }
+   }
+   public function filter($filter){
+    $filters = [];  // Filters arrayini yaratish
+    if ($filter) {
+        $filters['calory'] = $filter;  // 'name' filtri sifatida $searchni kiritish
+    }
+    $filterTpe = new ProductFilter();
+    $query = Product::query();
+    $filteredProducts = $filterTpe->apply($query, $filters)->get();
+    return $filteredProducts;
    }
 }
 

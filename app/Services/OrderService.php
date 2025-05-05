@@ -41,7 +41,9 @@ class OrderService implements OrderServiceInterface
     public function delete($id){
       return $this->orderReposityInterface->destroy($id);
     }
-
+    public function search($filter){
+        return $this->orderReposityInterface->filter($filter);
+    }
 }
 
 

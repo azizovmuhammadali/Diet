@@ -9,4 +9,5 @@ interface OrderServiceInterface
     public function show($id);
     public function update($id,$orderDTO);
     public function delete($id);
+    public function search($filter);
 }

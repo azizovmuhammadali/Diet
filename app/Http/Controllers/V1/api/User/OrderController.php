@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderStoreRequest;
 use App\Http\Requests\OrderUpdateRequest;
 use App\Http\Resources\OrderResource;
+use App\Http\Resources\ProductResource;
 use App\Interfaces\Services\OrderServiceInterface;
 use App\Traits\ResponseTrait;
+use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -58,5 +60,8 @@ use ResponseTrait;
         $this->orderServiceInterface->delete($id); // Keyin o'chiramiz
         return $this->success([], __('successes.order.delete'));
     }
-    
+      public function filter(Request $request){
+        $order = $this->orderServiceInterface->search($request->all());
+        return $this->success(ProductResource::collection($order));
+      }
 }

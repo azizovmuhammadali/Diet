@@ -20,10 +20,10 @@ class OrderService implements OrderServiceInterface
     }
     public function store($orderDTO)
     {
-       $data = [
-        'product_id' => $orderDTO->product_id,
-        'quantity' => $orderDTO->quantity,
-       ];
+        $data = [
+            'product_id' => $orderDTO->product_id,
+            'quantity' => $orderDTO->quantity,
+        ];
         return $this->orderReposityInterface->create($data);
     }
     

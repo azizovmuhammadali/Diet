@@ -19,10 +19,12 @@ class OrderReposity implements OrderReposityInterface
    public function create($data){
     $order = new Order();
     $order->user_id = Auth::id();
-    $order->quantity = $data['quantity'];
     $order->save();
-     $order->products()->attach($data['product_id']);
-  $admins = User::where('role', 'admin')->get();
+    foreach ($data['product_id'] as $key => $product_id) {
+      // Har bir mahsulotni va unga mos keluvchi quantityni attach qilish
+      $order->products()->attach($product_id, ['quantity' => $data['quantity'][$key]]);
+  }
+    $admins = User::where('role', 'admin')->get();
   foreach ($admins as $admin) {
     $admin->notify(new OrderCreatedNotification($order));
 }

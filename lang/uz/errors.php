@@ -6,6 +6,6 @@ return [
      'user' => 'Sizda unga kirish huquqi yoq'
    ],
    'order' => [
-    'limit' => 'Berilgan karoyadan oshib ketdi',
-]
-];
+    'limit' => 'Berilgan kaloriyadan oshib ketdi',
+   ],
+  ];

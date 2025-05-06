@@ -6,6 +6,6 @@ return [
      'user' => 'You do not have access for it'
 ],
 'order' => [
-'limit' => 'The specified limit has been exceeded',
+'limit' => 'Exceeding the calorie norm',
 ]
 ];

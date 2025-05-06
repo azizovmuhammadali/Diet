@@ -9,6 +9,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginNumberRequest;
 use App\Interfaces\Services\UserServiceInterface;
 
 class UserController extends Controller
@@ -16,7 +17,7 @@ class UserController extends Controller
     use ResponseTrait;
     public function __construct(protected UserServiceInterface $userServiceInterface){}
     public function register(RegisterRequest $register){
-       $userDTO = new UserDTO($register->name,$register->email,$register->password,$register->status);
+       $userDTO = new UserDTO($register->name,$register->email,$register->password,$register->status,$register->number);
        $user = $this->userServiceInterface->register($userDTO);
        return $this->success([
         'user' => new UserResource($user['user']),
@@ -26,6 +27,15 @@ class UserController extends Controller
     public function login(LoginRequest $loginRequest){
         $data = $loginRequest->validated();
         $response = $this->userServiceInterface->login($data);
+        return $this->success([
+            'user' => new UserResource($response['user']),
+            'token' => $response['token']
+        ], __('successes.user.login'));
+    
+    }
+    public function loginNumber(LoginNumberRequest $loginNumberRequest){
+        $data = $loginNumberRequest->validated();
+        $response = $this->userServiceInterface->loginnumber($data);
         return $this->success([
             'user' => new UserResource($response['user']),
             'token' => $response['token']

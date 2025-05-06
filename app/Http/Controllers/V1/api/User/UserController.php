@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1\api\User;
 
 use App\DTO\UserDTO;
+use App\Http\Requests\LoginNumberRequest;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
@@ -18,7 +19,7 @@ class UserController extends Controller
     public function __construct(protected UserServiceInterface $userServiceInterface){}
     public function register(RegisterRequest $register){
         $status = $register->status ?? 'user';
-       $userDTO = new UserDTO($register->name,$register->email,$register->password,$status);
+       $userDTO = new UserDTO($register->name,$register->email,$register->password,$status,$register->number);
        $user = $this->userServiceInterface->register($userDTO);
        return $this->success([
         'user' => new UserResource($user['user']),
@@ -28,6 +29,15 @@ class UserController extends Controller
     public function login(LoginRequest $loginRequest){
         $data = $loginRequest->validated();
         $response = $this->userServiceInterface->login($data);
+        return $this->success([
+            'user' => new UserResource($response['user']),
+            'token' => $response['token']
+        ], __('successes.user.login'));
+    
+    }
+    public function loginNumber(LoginNumberRequest $loginNumberRequest){
+        $data = $loginNumberRequest->validated();
+        $response = $this->userServiceInterface->loginnumber($data);
         return $this->success([
             'user' => new UserResource($response['user']),
             'token' => $response['token']
@@ -52,7 +62,7 @@ class UserController extends Controller
             return $this->error(__('errors.user.user'), 403);
         }
     
-        $userDTO = new UserDTO($userUpdateRequest->name,$userUpdateRequest->email,$userUpdateRequest->password,$userUpdateRequest->status);
+        $userDTO = new UserDTO($userUpdateRequest->name,$userUpdateRequest->email,$userUpdateRequest->password,$userUpdateRequest->status,$userUpdateRequest->number);
         $user = $this->userServiceInterface->update($id, $userDTO);
         return $this->success(new UserResource($user), __('successes.user.update'));
     }

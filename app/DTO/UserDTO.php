@@ -11,11 +11,13 @@ class UserDTO
     public $email;
     public $password;
     public $status;
-    public function __construct($name,$email,$password,$status)
+    public $number;
+    public function __construct($name,$email,$password,$status,$number)
     {
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
         $this->status = $status;
+        $this->number = $number;
     }
 }

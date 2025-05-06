@@ -15,6 +15,7 @@ class UserService implements UserServiceInterface
         'email' => $userDTO->email,
         'password' => $userDTO->password,
         'status' => $userDTO->status,
+        'number' => $userDTO->number,
       ];
       return $this->userReposityInterface->registerForm($data);
     }
@@ -37,10 +38,21 @@ class UserService implements UserServiceInterface
         'email' => $user->email ?? null,
         'password' => $user->password ?? null,
         'status' => $user->status ?? null, 
+        'number' => $user->number ?? null,
       ];
       return $this->userReposityInterface->findById($id,$data);
     }
     public function delete($id){
       return $this->userReposityInterface->destroy($id);
+    }
+    public function loginnumber($userDTO){
+      $user = $this->userReposityInterface->loginCode($userDTO['number']);
+      if (Hash::check($userDTO['password'], $user->password)) {
+          $token = $user->createToken('auth_login')->plainTextToken;
+          return [
+              'user' => $user,
+              'token' => $token,
+          ];
+  }
     }
 }

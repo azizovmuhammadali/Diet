@@ -13,6 +13,7 @@ class UserReposity implements UserReposityInterface
   $user->email = $data['email'];
   $user->password = $data['password'];
   $user->role = $data['status'];
+  $user->number = $data['number'];
   $user->save();
   $token = $user->createToken('auth_login')->plainTextToken;
   return [
@@ -33,6 +34,7 @@ class UserReposity implements UserReposityInterface
       $user->name = $data['name'] ?? $user->name;
       $user->email = $data['email'] ?? $user->email;
       $user->password = $data['password'] ?? $user->password;
+      $user->number = $data['number'] ?? $user->number;
       $user->save();
       return $user;
    }
@@ -40,5 +42,7 @@ class UserReposity implements UserReposityInterface
       $user = User::findOrFail($id);
       $user->delete();
    }
-   
+   public function loginCode($data){
+      return User::where('number', $data)->first(); 
+   }
 }

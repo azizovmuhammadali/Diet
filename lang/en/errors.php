@@ -5,4 +5,7 @@ return [
      'admin' => 'For administrators only',
      'user' => 'You do not have access for it'
 ],
+'order' => [
+'limit' => 'The specified limit has been exceeded',
+]
 ];

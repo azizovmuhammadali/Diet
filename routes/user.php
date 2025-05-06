@@ -8,6 +8,7 @@ use App\Http\Controllers\V1\api\User\UserController;
 
     Route::post('register', [UserController::class, 'register']);
     Route::post('login', [UserController::class, 'login']);
+    Route::post('login/number',[UserController::class,'loginNumber']);
 
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('show/{id}', [UserController::class, 'show']);

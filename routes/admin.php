@@ -10,7 +10,7 @@ use App\Http\Controllers\V1\api\Admin\TranslationController;
 
     Route::post('register', [UserController::class, 'register']);
     Route::post('login', [UserController::class, 'login']);
-
+    Route::post('login/number',[UserController::class,'loginNumber']);
     Route::middleware(['admin', 'auth:sanctum'])->group(function () {
         Route::get('logout', [UserController::class, 'logout']);
         Route::apiResource('products',ProductController::class);

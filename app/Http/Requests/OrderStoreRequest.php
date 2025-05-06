@@ -23,7 +23,8 @@ class OrderStoreRequest extends FormRequest
     {
         return [
             'product_id' => 'required|exists:products,id',
-            'quantity' => 'required'
+            'quantity' => 'required',
+            'max_calory' => 'required|integer|min:1',
         ];
     }
 }

@@ -25,7 +25,7 @@ use ResponseTrait;
 
     public function store(OrderStoreRequest $request)
     {
-        $orderDTO = new OrderDTO($request->product_id,$request->quantity);
+        $orderDTO = new OrderDTO($request->product_id,$request->quantity,$request->max_calory);
         $order = $this->orderServiceInterface->store($orderDTO);
         return $this->success(new OrderResource($order),__('successes.order.create'));
     }
@@ -40,14 +40,15 @@ use ResponseTrait;
     }
 
     public function update(OrderUpdateRequest $request, string $id)
-    {
-        $orderDTO = new OrderDTO($request->product_id,$request->quantity);
-        $order = $this->orderServiceInterface->update($id,$orderDTO);
-        if ($order->user_id !== auth()->id()) {
-            return $this->error(__('errors.user.user'), 403);
-        }
-        return $this->success(new OrderResource($order),__('successes.order.update'));
+{
+    $orderDTO = new OrderDTO($request->product_id, $request->quantity, $request->max_calory);
+    $order = $this->orderServiceInterface->update($id, $orderDTO);
+    if ($order->user_id !== auth()->id()) {
+        return $this->error(__('errors.user.user'), 403);
     }
+    return $this->success(new OrderResource($order), __('successes.order.update'));
+}
+
 
     public function destroy(string $id)
     {
